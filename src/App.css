@@ -41,14 +41,14 @@ h1 {
 }
 
 .search {
-  width: 71%;
+  width: 44%;
   margin: 4rem 0 2rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  padding: 1.5rem 1.75rem;
+  padding: 0.5rem 1.75rem;
   border-radius: 3rem;
   background: #1f2123;
   -webkit-box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
@@ -58,7 +58,7 @@ h1 {
 .search input {
   flex: 1;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-family: var(--font-raleway);
   font-weight: 500;
   padding-right: 1rem;
@@ -69,7 +69,7 @@ h1 {
 }
 
 .search img {
-  width: 35px;
+  width: 25px;
   height: 35px;
   cursor: pointer;
 }
@@ -116,8 +116,8 @@ h1 {
 }
 
 .movie {
-  width: 310px;
-  height: 460px;
+  width: 200px;
+  height: 360px;
   margin: 1.5rem;
 
   position: relative;
@@ -125,7 +125,7 @@ h1 {
   overflow: hidden;
   border: none;
 
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
+  transition: all 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
   box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
 }
 
