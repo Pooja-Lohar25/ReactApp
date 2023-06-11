@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import SearchIcon from "./search.svg";
 import "./App.css";
 import MovieCard from "./components/MovieCard";
+import Nav from "./components/Nav";
 //71d6cbec
 const API_URL = "http://www.omdbapi.com?apikey=71d6cbec";
 
@@ -20,12 +21,13 @@ const App = () => {
 
   useEffect(() => {
     setMovies([])
-    searchmovies("");
+    searchmovies("popular");
   }, []);
 
   return (
     <div className="app">
-      <h1>Movie Land</h1>
+      <Nav/>
+      <h1 className="h1 welcome"> Welcome to the Movie Land </h1>
       <div className="search">
         <input placeholder="Search" 
         value={searchTerm} 
