@@ -9,19 +9,29 @@ const API_URL = "http://www.omdbapi.com?apikey=71d6cbec";
 
 const App = () => {
   const [movies, setMovies] = useState([]);
-  const [searchTerm,setSearchTerm] = useState("");
+  const [series, setSeries] = useState([]);
+  const [episodes, setEpisodes] = useState([]);
 
-  const searchmovies = async (title) => {
-    const response = await fetch(`${API_URL}&s=${title}`);
-    const data = await response.json();
+  const [searchTerm,setSearchTerm] = useState("");
   
-    console.log(data.Search);
+  const searchall = async (title) => {
+    const responsemov = await fetch(`${API_URL}&s=${title}&type=movie`);
+    const data = await responsemov.json();
     setMovies(data.Search);
+
+    const responseser = await fetch(`${API_URL}&s=${title}&type=series`);
+    const data1 = await responseser.json();
+    setSeries(data1.Search);
+
+    const responseep = await fetch(`${API_URL}&s=${title}&type=episode`);
+    const data2 = await responseep.json();
+    setEpisodes(data2.Search);
   };
 
   useEffect(() => {
-    setMovies([])
-    searchmovies("popular");
+    setMovies([]);
+    setSeries([]);
+    setEpisodes([]);
   }, []);
 
   return (
@@ -33,23 +43,33 @@ const App = () => {
         value={searchTerm} 
         onChange={(e) => {
           setSearchTerm(e.target.value)
-          searchmovies(e.target.value)
+          searchall(e.target.value)
           }} />
         <img
           src={SearchIcon}
           alt="search"
-          onClick={() => searchmovies(searchTerm)}
+          onClick={() => searchall(searchTerm)}
         />
       </div>
 
       {
-        movies?.length > 0 ?
+        movies?.length > 0 || series?.length > 0 || episodes?.length > 0 ?
         (<div className="container">
           {
-            movies.map((movie) => {
+            movies?.map((movie) => {
+              return <MovieCard movie={movie}/>
+            })
+          }
+          {
+            series?.map((movie) => {
               return <MovieCard movie={movie}/>
             })
           } 
+          {
+            episodes?.map((movie) => {
+              return <MovieCard movie={movie}/>
+            })
+          }
       </div>)
         :
         (<div className="empty"><h3>No movies</h3>
