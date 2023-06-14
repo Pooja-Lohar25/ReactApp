@@ -43,15 +43,15 @@ const Home = () => {
           placeholder="Search"
           value={searchTerm}
           onChange={(e) => {
-            setSearchTerm(e.target.value);
-            searchall(e.target.value);
-          }}
-        />
+              setSearchTerm(e.target.value);
+              searchall(e.target.value);
+            }}
+            />
         <img
           src={SearchIcon}
           alt="search"
           onClick={() => searchall(searchTerm)}
-        />
+          />
       </div>
 
       {movies?.length > 0 || series?.length > 0 || episodes?.length > 0 ? (
