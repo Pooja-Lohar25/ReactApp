@@ -9,29 +9,19 @@ const API_URL = "http://www.omdbapi.com?apikey=71d6cbec";
 
 const App = () => {
   const [movies, setMovies] = useState([]);
-  const [series, setSeries] = useState([]);
-  const [episodes, setEpisodes] = useState([]);
-
   const [searchTerm,setSearchTerm] = useState("");
+
+  const searchmovies = async (title) => {
+    const response = await fetch(`${API_URL}&s=${title}`);
+    const data = await response.json();
   
-  const searchall = async (title) => {
-    const responsemov = await fetch(`${API_URL}&s=${title}&type=movie`);
-    const data = await responsemov.json();
+    console.log(data.Search);
     setMovies(data.Search);
-
-    const responseser = await fetch(`${API_URL}&s=${title}&type=series`);
-    const data1 = await responseser.json();
-    setSeries(data1.Search);
-
-    const responseep = await fetch(`${API_URL}&s=${title}&type=episode`);
-    const data2 = await responseep.json();
-    setEpisodes(data2.Search);
   };
 
   useEffect(() => {
-    setMovies([]);
-    setSeries([]);
-    setEpisodes([]);
+    setMovies([])
+    searchmovies("popular");
   }, []);
 
   return (
@@ -43,33 +33,23 @@ const App = () => {
         value={searchTerm} 
         onChange={(e) => {
           setSearchTerm(e.target.value)
-          searchall(e.target.value)
+          searchmovies(e.target.value)
           }} />
         <img
           src={SearchIcon}
           alt="search"
-          onClick={() => searchall(searchTerm)}
+          onClick={() => searchmovies(searchTerm)}
         />
       </div>
 
       {
-        movies?.length > 0 || series?.length > 0 || episodes?.length > 0 ?
+        movies?.length > 0 ?
         (<div className="container">
           {
-            movies?.map((movie) => {
-              return <MovieCard movie={movie}/>
-            })
-          }
-          {
-            series?.map((movie) => {
+            movies.map((movie) => {
               return <MovieCard movie={movie}/>
             })
           } 
-          {
-            episodes?.map((movie) => {
-              return <MovieCard movie={movie}/>
-            })
-          }
       </div>)
         :
         (<div className="empty"><h3>No movies</h3>
