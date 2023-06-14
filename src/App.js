@@ -1,8 +1,11 @@
 import React from "react";
 import "./App.css";
 import Nav from "./components/Nav";
-import Home from "./components/home";
-import Error from "./components/error";
+import Home from "./components/Home";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import More from "./components/More";
+import Error from "./components/Error";
 import { Routes,Route } from "react-router";
 
 const App = () => {
