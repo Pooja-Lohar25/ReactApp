@@ -36,7 +36,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <h1 className="h1 welcome"> Welcome to the Movie Land </h1>
       <div className="search">
         <input
@@ -71,7 +71,7 @@ const Home = () => {
           <h3>No movies</h3>
         </div>
       )}
-    </div>
+    </>
   );
 };
 export default Home;
