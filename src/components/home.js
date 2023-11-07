@@ -44,7 +44,6 @@ const Home = () => {
           value={searchTerm}
           onChange={(e) => {
               setSearchTerm(e.target.value);
-              searchall(e.target.value);
             }}
             />
         <img
